@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13" height="14" viewBox="0 0 13 14">
+  <g id="Group_74" data-name="Group 74" transform="translate(-23 -423)">
+    <g id="calendar-page-empty" transform="translate(23 423)">
+      <path id="Path_1154" data-name="Path 1154" d="M30.979,2.3a.961.961,0,0,0-.7-.3h-1V1.25a1.2,1.2,0,0,0-.367-.883A1.2,1.2,0,0,0,28.026,0h-.5a1.2,1.2,0,0,0-.883.367,1.2,1.2,0,0,0-.367.883V2h-3V1.25a1.2,1.2,0,0,0-.367-.883A1.2,1.2,0,0,0,22.026,0h-.5a1.2,1.2,0,0,0-.883.367,1.2,1.2,0,0,0-.367.883V2h-1a.961.961,0,0,0-.7.3.961.961,0,0,0-.3.7V13a1.014,1.014,0,0,0,1,1h11a1.014,1.014,0,0,0,1-1V3A.961.961,0,0,0,30.979,2.3Zm-3.7-1.047a.24.24,0,0,1,.25-.25h.5a.241.241,0,0,1,.25.25V3.5a.241.241,0,0,1-.25.25h-.5a.24.24,0,0,1-.25-.25Zm-6,0a.241.241,0,0,1,.25-.25h.5a.241.241,0,0,1,.25.25V3.5a.241.241,0,0,1-.25.25h-.5a.241.241,0,0,1-.25-.25Zm9,11.75h-11V5h11Z" transform="translate(-18.276 0)" fill="#babec2"/>
+    </g>
+    <text id="_" data-name="+" transform="translate(29.539 435)" fill="#babec2" font-size="9" font-family="SegoeUI-Bold, Segoe UI" font-weight="700" letter-spacing="0em"><tspan x="-3.182" y="0">+</tspan></text>
+  </g>
+</svg>

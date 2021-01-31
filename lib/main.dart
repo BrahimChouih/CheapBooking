@@ -2,6 +2,8 @@ import 'package:cheap_booking/screens/choce_services_screen.dart';
 import 'package:cheap_booking/screens/home.dart';
 import 'package:cheap_booking/screens/info_screen.dart';
 import 'package:cheap_booking/screens/splash_screen.dart';
+import 'package:cheap_booking/screens/steps/search_destination.dart';
+import 'package:cheap_booking/screens/steps_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +21,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         primaryColor: Color(0xff00D0DF),
         scaffoldBackgroundColor: Color(0xffEEFDFF),
+        iconTheme: IconThemeData(
+          color: Color(0xff405064),
+        ),
       ),
       getPages: [
         GetPage(name: SplashScreen.id, page: () => SplashScreen()),
@@ -26,6 +31,18 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: ChoseServicesScreen.id, page: () => ChoseServicesScreen()),
         GetPage(name: HomeScreen.id, page: () => HomeScreen()),
+        GetPage(
+          name: SearchDestination.id,
+          page: () => SearchDestination(),
+          transition: Transition.rightToLeft,
+          curve: Curves.easeIn,
+        ),
+        GetPage(
+          name: StepsScreen.id,
+          page: () => StepsScreen(),
+          transition: Transition.rightToLeft,
+          curve: Curves.easeIn,
+        ),
       ],
     );
   }

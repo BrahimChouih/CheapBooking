@@ -1,10 +1,12 @@
 import 'package:cheap_booking/components/my_text.dart';
+import 'package:cheap_booking/screens/steps/search_destination.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   final String titleFHC;
+  TextEditingController destController = TextEditingController();
 
   HomePage({this.titleFHC});
   @override
@@ -36,7 +38,13 @@ class HomePage extends StatelessWidget {
       {'cityName': 'Maldives', 'image': 'maldives.png'},
       {'cityName': 'Jeddah', 'image': 'jeddah.png'},
       {'cityName': 'Dhaka', 'image': 'photo.png'},
+      {'cityName': 'Dhaka', 'image': 'dhaka.png'},
+      {'cityName': 'Jeddah', 'image': 'jeddah.png'},
+      {'cityName': 'Dhaka', 'image': 'photo.png'},
     ];
+    if (titleFHC == 'hotel') {
+      cities = cities.reversed.toList();
+    }
     List<Widget> children = [];
     int j = -1;
     for (int i = 0; i < cities.length / 2; i++) {
@@ -47,10 +55,14 @@ class HomePage extends StatelessWidget {
         image: cities[j]['image'],
       ));
       j++;
-      rowChild.add(cityCard(
-        cityName: cities[j]['cityName'],
-        image: cities[j]['image'],
-      ));
+      try {
+        rowChild.add(cityCard(
+          cityName: cities[j]['cityName'],
+          image: cities[j]['image'],
+        ));
+      } catch (e) {
+        rowChild.add(Expanded(child: Container()));
+      }
 
       children.add(
         Row(children: rowChild),
@@ -157,6 +169,17 @@ class HomePage extends StatelessWidget {
                 alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: TextField(
+                  onTap: () {
+                    Get.toNamed(
+                      SearchDestination.id,
+                      arguments: [destController.text],
+                    );
+                  },
+                  controller: destController,
+                  onChanged: (value) => Get.toNamed(
+                    SearchDestination.id,
+                    arguments: [destController.text],
+                  ),
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,
