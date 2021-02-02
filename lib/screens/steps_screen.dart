@@ -209,14 +209,20 @@ class StepsScreen extends StatelessWidget {
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              DateTime lastDate;
+              try {
+                lastDate = DateTime(
+                    dateArival.year, dateArival.month, dateArival.day - 1);
+              } catch (e) {
+                lastDate = DateTime(DateTime.now().year + 1);
+              }
               dateDepature = await showDatePicker(
-                context: Get.context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime.now(),
-                lastDate: DateTime(dateArival.year, dateArival.month,
-                        dateArival.day - 1) ??
-                    DateTime(DateTime.now().year + 1),
-              );
+                    context: Get.context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime.now(),
+                    lastDate: lastDate,
+                  ) ??
+                  dateDepature;
               if (dateDepature != null &&
                   dateArival != null &&
                   stepController.currentStep == 4) {
@@ -243,12 +249,18 @@ class StepsScreen extends StatelessWidget {
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              DateTime firstDate;
+              try {
+                firstDate = DateTime(dateDepature.year, dateDepature.month,
+                    dateDepature.day + 1);
+              } catch (e) {}
               dateArival = await showDatePicker(
-                context: Get.context,
-                initialDate: dateDepature ?? DateTime.now(),
-                firstDate: dateDepature ?? DateTime.now(),
-                lastDate: DateTime(DateTime.now().year + 1),
-              );
+                    context: Get.context,
+                    initialDate: firstDate ?? DateTime.now(),
+                    firstDate: firstDate ?? DateTime.now(),
+                    lastDate: DateTime(DateTime.now().year + 1),
+                  ) ??
+                  dateArival;
               if (dateDepature != null &&
                   dateArival != null &&
                   stepController.currentStep == 4) {
