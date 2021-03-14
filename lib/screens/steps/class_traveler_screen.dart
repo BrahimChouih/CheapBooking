@@ -1,3 +1,5 @@
+import 'package:cheap_booking/components/submit_button.dart';
+import 'package:cheap_booking/controllers/step_controller.dart';
 import 'package:cheap_booking/controllers/traveler_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -51,6 +53,28 @@ class ClassTravelerScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: Get.height * 0.05),
+          GetBuilder<ClassTravelerController>(
+            id: 'travelers',
+            builder: (_) => Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                travelers(txt: 'Adults 18-64', type: 'adults'),
+                travelers(txt: 'Senior 65+', type: 'senior'),
+                travelers(txt: 'Youth 12-17', type: 'youth'),
+                travelers(txt: 'Child 2-11', type: 'child'),
+                travelers(
+                  txt: 'Seat Infant Under 2',
+                  type: 'seat_infant_under',
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: Get.height * 0.05),
+          SubmitButton(onTap: () {
+            classTravelerController.isSelected = true;
+            Get.back();
+          }),
         ],
       ),
     );
@@ -85,6 +109,61 @@ class ClassTravelerScreen extends StatelessWidget {
                   )
                 ]
               : null,
+        ),
+      ),
+    );
+  }
+
+  Widget travelers({String txt, String type}) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          plusMinusButton('+', type),
+          Column(
+            children: [
+              Text(
+                classTravelerController.travelers[type].toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+              Text(txt, style: TextStyle(color: Color(0xff7E7C85))),
+            ],
+          ),
+          plusMinusButton('-', type),
+        ],
+      ),
+    );
+  }
+
+  Widget plusMinusButton(String pm, String type) {
+    return InkWell(
+      onTap: () {
+        int traveler = classTravelerController.travelers[type];
+        if (pm == "+") {
+          traveler++;
+          classTravelerController.numTravelers++;
+        } else if (traveler > 0) {
+          traveler--;
+          classTravelerController.numTravelers--;
+        }
+        classTravelerController.onChangedTraveler(
+          type: type,
+          travelerNumber: traveler,
+        );
+      },
+      child: Container(
+        child: Icon(
+          pm == '+' ? Icons.add : Icons.remove,
+          color: Colors.black,
+        ),
+        decoration: BoxDecoration(
+          color: Color(0xffEDF2F8),
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
     );

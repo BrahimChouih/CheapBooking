@@ -9,10 +9,10 @@ class StepController extends GetxController {
     update();
   }
 
-  void onChangerdClassesAndTraveler(
+  void onChangerdClassesAndTraveler({
     String classes,
     int traveler,
-  ) {
+  }) {
     this.classes = classes;
     this.traveler = traveler;
     update();

@@ -1,3 +1,4 @@
+import 'package:cheap_booking/components/submit_button.dart';
 import 'package:cheap_booking/controllers/step_controller.dart';
 import 'package:cheap_booking/controllers/traveler_controller.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,6 +19,7 @@ class StepsScreen extends StatelessWidget {
   DateTime dateArival;
 
   Rx<TypeTrip> _typeTrip = TypeTrip.none.obs;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,9 +43,9 @@ class StepsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(height: 10),
           Container(
             height: 400,
+            margin: EdgeInsets.only(top: 20),
             child: Row(
               children: [
                 SizedBox(width: 20),
@@ -150,6 +152,11 @@ class StepsScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: Get.height * 0.05),
+          GetBuilder<StepController>(
+              builder: (_) => stepController.currentStep == 6
+                  ? SubmitButton(onTap: () {})
+                  : Container()),
         ],
       ),
     );
@@ -307,7 +314,10 @@ class StepsScreen extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
-      onTap: () => Get.to(ClassTravelerScreen()),
+      onTap: () async {
+        await Get.to(ClassTravelerScreen());
+        stepController.onChanged(6);
+      },
       child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
