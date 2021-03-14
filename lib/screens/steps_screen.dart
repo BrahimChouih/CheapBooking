@@ -1,14 +1,19 @@
+import 'package:cheap_booking/controllers/step_controller.dart';
+import 'package:cheap_booking/controllers/traveler_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import 'steps/class_traveler_screen.dart';
+
 class StepsScreen extends StatelessWidget {
   static const id = 'StepsScreen';
   final Color colorActive = Color(0xff00D7FF);
   String destination = Get.arguments[0];
   final stepController = Get.put(StepController());
+  final classTravelerController = Get.put(ClassTravelerController());
   DateTime dateDepature;
   DateTime dateArival;
 
@@ -136,7 +141,9 @@ class StepsScreen extends StatelessWidget {
                       stepController.currentStep >= 4
                           ? selectTime()
                           : SizedBox(height: 55),
-                      SizedBox(height: 55),
+                      stepController.currentStep >= 5
+                          ? selectClassesAndTraveler()
+                          : SizedBox(height: 55),
                     ],
                   ),
                 ),
@@ -294,6 +301,51 @@ class StepsScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget selectClassesAndTraveler() {
+    bool isSelected = classTravelerController.isSelected;
+    return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      onTap: () => Get.to(ClassTravelerScreen()),
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              width: Get.width * 0.357,
+              height: 55,
+              alignment: Alignment.center,
+              child: Text(
+                isSelected ? classTravelerController.classes : 'Economy',
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Container(
+              width: Get.width * 0.357,
+              height: 55,
+              alignment: Alignment.center,
+              child: Text(
+                isSelected
+                    ? '${classTravelerController.numTravelers} Traveler'
+                    : '0 Traveler',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ],
+        ),
+        width: Get.width * 0.75,
+        height: 55,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: isSelected ? colorActive : Colors.grey,
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 enum TypeTrip {
@@ -301,12 +353,4 @@ enum TypeTrip {
   roundTrip,
   multiCity,
   none,
-}
-
-class StepController extends GetxController {
-  int currentStep = 3;
-  void onChanged(int newStep) {
-    currentStep = newStep;
-    update();
-  }
 }
