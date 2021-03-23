@@ -1,6 +1,7 @@
 import 'package:cheap_booking/components/submit_button.dart';
 import 'package:cheap_booking/controllers/step_controller.dart';
 import 'package:cheap_booking/controllers/traveler_controller.dart';
+import 'package:cheap_booking/screens/loading_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -155,7 +156,11 @@ class StepsScreen extends StatelessWidget {
           SizedBox(height: Get.height * 0.05),
           GetBuilder<StepController>(
               builder: (_) => stepController.currentStep == 6
-                  ? SubmitButton(onTap: () {})
+                  ? SubmitButton(
+                      onTap: () {
+                        Get.to(LoadingScreen());
+                      },
+                    )
                   : Container()),
         ],
       ),

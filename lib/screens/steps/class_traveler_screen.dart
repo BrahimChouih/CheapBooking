@@ -71,10 +71,14 @@ class ClassTravelerScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: Get.height * 0.05),
-          SubmitButton(onTap: () {
-            classTravelerController.isSelected = true;
-            Get.back();
-          }),
+          SubmitButton(
+            onTap: () {
+              if (classTravelerController.numTravelers != 0) {
+                classTravelerController.isSelected = true;
+                Get.back();
+              }
+            },
+          ),
         ],
       ),
     );

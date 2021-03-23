@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class StepController extends GetxController {
-  int currentStep = 3;
+  int currentStep = 6;
   String classes = 'Economy';
   int traveler = 0;
   void onChanged(int newStep) {
