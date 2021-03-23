@@ -1,6 +1,6 @@
 # cheap_booking
 
-A new Flutter project.
+Simple application with beautiful UI
 
 ## Getting Started
 
