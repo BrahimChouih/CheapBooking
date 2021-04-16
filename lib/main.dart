@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Cheap Booking App',
+      debugShowCheckedModeBanner: false,
       initialRoute: SplashScreen.id,
       theme: ThemeData.light().copyWith(
         primaryColor: Color(0xff00D0DF),
