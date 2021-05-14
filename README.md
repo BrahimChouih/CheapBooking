@@ -3,6 +3,7 @@
 Simple application with beautiful UI
 ![Alt text](/screenshots/cheapBooking.jpg?raw=true)
 
+
 ![Alt text](/screenshots/cheapBooking22.jpg?raw=true)
 
 ## Getting Started
