@@ -1,6 +1,7 @@
-# cheap_booking
+# cheap_booking (Challenge)
 
 Simple application with beautiful UI
+
 ![Alt text](/screenshots/cheapBooking.jpg?raw=true)
 
 
