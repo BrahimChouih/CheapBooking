@@ -1,4 +1,4 @@
-# cheap_booking (Challenge)
+# Cheap Booking (UI Challenge)
 
 Simple application with beautiful UI
 
